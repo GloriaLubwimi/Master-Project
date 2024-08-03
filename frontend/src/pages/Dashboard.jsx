@@ -8,7 +8,7 @@ const Dashboard = () => {
 
 
     return (
-        <div>
+        <div className='dashboard'>
             <h1>Welcome </h1>
         </div>
     )

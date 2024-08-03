@@ -133,7 +133,7 @@ section>h2 {
 }
 
 .home-nav {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--color-primary);
   text-decoration: none;
@@ -244,16 +244,21 @@ img {
   padding: 1rem;
 }
 
-.nav-home-links {
+/*.nav-home-links {
   display: flex;
   gap: 2rem;
+}*/
+
+.dashboard {
+  text-align: center;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--color-primary);
   text-decoration: none;
+  padding: 0.5rem 1rem;
 }
 
 .nav-links {
