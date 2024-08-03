@@ -31,7 +31,7 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = []
 
-CORES_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "http://localhost:5173",
 ]
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     "djoser",
-    "rest_framework_simple_jwt",
+    "rest_framework_simplejwt",
     # Internal Apps
     'users.apps.UserConfig'
 ]
@@ -177,3 +177,13 @@ DJOSER = {
         'user_delete': "djoser.serializers.UserDeleteSerializer",      
     },
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_USE_TLS = True
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = "info@journal-bullet.com"
+DOMAIN = env("DOMAIN")
+SITE_NAME = "Patmose Församling"
