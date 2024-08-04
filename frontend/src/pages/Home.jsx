@@ -1,15 +1,24 @@
 import React from 'react'
-//import { useSelector } from 'react-redux'
-
+import patmos4 from './../assets/patmos4.jpg'
 
 const Home = () => {
-
-    //const { userInfo } = useSelector((state) => state.auth)
 
 
     return (
         <div className='home'>
-            <h1>Patmos Church</h1>
+            
+            <div className='patmos4-img'>
+                
+            </div>
+
+            <div className='home-description'>
+            
+            </div>
+
+            <div className='patmos5-img'>
+                
+            </div>
+
         </div>
     )
 }

@@ -129,7 +129,12 @@ section>h2 {
 }
 
 .home {
-  text-align: center;
+  height: 100vh;
+}
+
+.home-description {
+  width: 100%;
+  height: 25%;
 }
 
 .home-nav {
@@ -256,7 +261,7 @@ img {
   height: 100vh;
 }
 
-.dashboard .col-1 {
+/*.dashboard .col-1 {
   flex-basis: 50%;
   background-color: green;
 }
@@ -264,7 +269,7 @@ img {
 .dashboard .col-2 {
   flex-basis: 50%;
   background-color: red;
-}
+}*/
 
 .bg-1 {
   background-image: url(./assets/patmos.jpg);
@@ -286,6 +291,20 @@ img {
   background-image: url(./assets/patmos2.jpg);
   width: 100%;
   height: 100%;
+  background-size: cover;
+}
+
+.patmos4-img {
+  background-image: url(./assets/patmos4.jpg);
+  width: 100%;
+  height: 25%;
+  background-size: cover;
+}
+
+.patmos5-img {
+  background-image: url(./assets/patmos5.jpg);
+  width: 100%;
+  height: 25%;
   background-size: cover;
 }
 
