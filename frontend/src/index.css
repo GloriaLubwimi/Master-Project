@@ -250,7 +250,43 @@ img {
 }*/
 
 .dashboard {
+  display: flex;
+  justify-content: space-around;
   text-align: center;
+  height: 100vh;
+}
+
+.dashboard .col-1 {
+  flex-basis: 50%;
+  background-color: green;
+}
+
+.dashboard .col-2 {
+  flex-basis: 50%;
+  background-color: red;
+}
+
+.bg-1 {
+  background-image: url(./assets/patmos.jpg);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.bg-1 .booking-title-1 {
+  padding-top: 5%;
+}
+
+.bg-2 .booking-title-1 {
+  padding-top: 5%;
+}
+
+
+.bg-2 {
+  background-image: url(./assets/patmos2.jpg);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
 }
 
 .logo {
