@@ -1,5 +1,5 @@
 import React from 'react'
-import patmos4 from './../assets/patmos4.jpg'
+
 
 const Home = () => {
 
@@ -12,10 +12,14 @@ const Home = () => {
             </div>
 
             <div className='home-description'>
-            
+                <h1>Welcome to patmos church</h1>
             </div>
 
-            <div className='patmos5-img'>
+            {/* <div className='patmos5-img'>
+                
+            </div> */}
+
+            <div>
                 
             </div>
 

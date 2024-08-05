@@ -18,27 +18,35 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
-    <>
+    <div className="container">
       <Router>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/homepage" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/activate/:uid/:token" element={<ActivatePage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
-          <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordPageConfirm />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/gift" element={<Gift />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/history" element={<History />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <div className="header">
+          <Nav />
+        </div>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/homepage" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/activate/:uid/:token" element={<ActivatePage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordPageConfirm />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/gift" element={<Gift />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/history" element={<History />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+        <div className="footer">
+          
+        </div>
       </Router>
+      
       <ToastContainer />
-    </>
+    </div>
   )
 }
 
