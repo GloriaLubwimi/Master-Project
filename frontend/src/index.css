@@ -242,14 +242,7 @@ img {
   align-items: center;
   background-color: var(--color-bg);
   padding: 1rem;
-  /* position: fixed;
-  width: 100%; */
 }
-
-/*.nav-home-links {
-  display: flex;
-  gap: 2rem;
-}*/
 
 .dashboard {
   display: flex;
@@ -258,16 +251,6 @@ img {
   height: 100vh;
 }
 
-/*.dashboard .col-1 {
-  flex-basis: 50%;
-  background-color: green;
-}
-
-.dashboard .col-2 {
-  flex-basis: 50%;
-  background-color: red;
-}*/
-
 .bg-1 {
   background-image: url(./assets/patmos.jpg);
   width: 100%;
@@ -275,14 +258,13 @@ img {
   background-size: cover;
 }
 
-.bg-1 .booking-title-1 {
+.booking-title-1 {
   padding-top: 5%;
 }
 
-.bg-2 .booking-title-1 {
-  padding-top: 5%;
+.fc-direction-ltr  {
+  padding: 0 23.5rem 25rem 23.5rem;
 }
-
 
 .bg-2 {
   background-image: url(./assets/patmos2.jpg);

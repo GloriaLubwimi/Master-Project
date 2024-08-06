@@ -15,6 +15,7 @@ import ResetPasswordPage from "./pages/ResetPasswordPage"
 import ResetPasswordPageConfirm from "./pages/ResetPasswordPageConfirm";
 import ActivatePage from "./pages/ActivatePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import MyCalendar1 from "./pages/calendars/MyCalendar1";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/community" element={<Community />} />
             <Route path="/gift" element={<Gift />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/:mycalendar" element={<MyCalendar1 />} />
             <Route path="/history" element={<History />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

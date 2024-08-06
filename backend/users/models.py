@@ -19,3 +19,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
+class Appointments(models.Model):
+    name = models.CharField(max_length= 200)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    comments = models.CharField(max_length=500, blank=True, null=True)
+    staus =  models.CharField(max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:
+        return self.name
