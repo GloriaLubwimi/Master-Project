@@ -25,7 +25,7 @@ class Appointments(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     comments = models.CharField(max_length=500, blank=True, null=True)
-    staus =  models.CharField(max_length=100)
+    status =  models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 

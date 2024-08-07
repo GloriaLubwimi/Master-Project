@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-// import { useParams } from 'react-router-dom'
 import AxiosInstance from '../AxiosInstance'
+import '../../index.css'
 
 
 const MyCalendar1 = () => {
@@ -26,13 +26,8 @@ const MyCalendar1 = () => {
                 plugins={[ dayGridPlugin ]}
                 initialView="dayGridMonth"
                 events={events}
+                // eventBackgroundColor = {'#A020F0'}
 
-
-                // events={[
-                //     {title : 'Event #1', start : '2024-08-06'},
-                //     {title : 'Event #2', start : '2024-08-18', end: '2024-08-20'},
-                //     {title : 'Event #3', start : '2024-08-07T12:00:00', allDay: false},
-                // ]}
             />
         
         </React.Fragment>

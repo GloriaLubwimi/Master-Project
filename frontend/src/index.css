@@ -329,6 +329,25 @@ img {
 }
 
 
+/* ============ Status css for Calendars ============ */
+
+a.Completed{
+  background-color: red;
+  border: 2px solid darkred;
+}
+
+a.Open{
+  background-color: green;
+  border: 2px solid darkgreen;
+}
+
+a.Progress{
+  background-color: orange;
+  border: 2px solid darkorange;
+}
+
+
+
 /* ============ Auth pages (Login, Register, Reset) ============ */
 
 .auth__form {
