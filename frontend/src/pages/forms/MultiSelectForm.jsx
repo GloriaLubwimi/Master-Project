@@ -38,7 +38,7 @@ export default function MultiSelectForm({label, options, setSelectedValue, selec
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300, border: '1px solid white', backgroundColor: 'white' }}>
+      <FormControl sx={{ m: 1, width: '100%'}}>
         <InputLabel id="demo-multiple-checkbox-label">{label}</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
