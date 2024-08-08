@@ -9,7 +9,13 @@ const Contact = () => {
 
     return (
         <div className='contact'>
-            <h1>Contact</h1>
+            <div className='patmos4-img'>
+                
+            </div>
+
+            <div className='home-description'>
+                <h1>Contact</h1>
+            </div>
         </div>
     )
 }

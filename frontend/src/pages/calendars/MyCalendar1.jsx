@@ -7,14 +7,14 @@ import dayjs from 'dayjs'
 import MultiSelectForm from '../forms/MultiSelectForm'
 import { Box } from '@mui/material'
 import DatePickerForm from '../forms/DatePickerForm'
+import { useNavigate } from 'react-router-dom'
 
 const MyCalendar1 = () => {
-
     const [events, setEvents] = useState([])
     const [statusOptions, setStatusOptions] = useState()
     const [selectedStatus, setSelectedStatus] = useState([])
-
     const [fromDate, setFromDate] = useState(null)
+    const navigate = useNavigate()
 
     const fromDateChange = (newDate) =>{
         setFromDate(newDate)
@@ -27,8 +27,6 @@ const MyCalendar1 = () => {
        setToDate(newDate)
         console.log("Selected to date", newDate.format('DD-MM-YYYY'))
      }
-   
-
 
     console.log(selectedStatus)
 
@@ -37,9 +35,6 @@ const MyCalendar1 = () => {
     (!fromDate || dayjs(event.start).isAfter(fromDate,'day')) &&
     (!toDate || dayjs(event.end).isBefore(toDate,'day'))
       );
-
-    
-
 
     const [loading, setLoading] = useState(true)
 
@@ -56,6 +51,10 @@ const MyCalendar1 = () => {
     useEffect(() =>{
         GetData();
     }, [])
+
+    const eventClickAction = (data) => {
+        navigate(`/eventdetails/${data.event.id}`)
+    }
 
     return (
         <React.Fragment>
@@ -87,6 +86,7 @@ const MyCalendar1 = () => {
                     plugins={[ dayGridPlugin ]}
                     initialView="dayGridMonth"
                     events={filteredEvents}
+                    eventClick={eventClickAction}
                 />
             </Box>
             </>

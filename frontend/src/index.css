@@ -276,7 +276,7 @@ img {
 .patmos4-img {
   background-image: url(./assets/patmos4.jpg);
   width: 100%;
-  height: 45%;
+  height: 20rem;
   background-size: cover;
 }
 
@@ -285,6 +285,7 @@ img {
   height: 20rem;
   background-color: white;
   color: black;
+  text-align: center;
 }
 
 .patmos5-img {
@@ -354,6 +355,10 @@ a.Progress{
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
   background-color: white;
   border-radius: 0.5rem;
+}
+
+.fc-event{
+  cursor: pointer;
 }
 
 

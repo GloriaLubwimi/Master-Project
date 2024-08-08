@@ -15,14 +15,6 @@ const Home = () => {
                 <h1>Welcome to patmos church</h1>
             </div>
 
-            {/* <div className='patmos5-img'>
-                
-            </div> */}
-
-            <div>
-                
-            </div>
-
         </div>
     )
 }
