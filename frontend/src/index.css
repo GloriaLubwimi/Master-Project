@@ -332,12 +332,12 @@ img {
 
 /* ============ Status css for Calendars ============ */
 
-a.Completed{
+a.Booked{
   background-color: red;
   border: 2px solid darkred;
 }
 
-a.Open{
+a.Available{
   background-color: green;
   border: 2px solid darkgreen;
 }

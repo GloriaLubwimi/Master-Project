@@ -34,7 +34,7 @@ const MyCalendar1 = () => {
         selectedStatus.includes(event.classNames) &&
     (!fromDate || dayjs(event.start).isAfter(fromDate,'day')) &&
     (!toDate || dayjs(event.end).isBefore(toDate,'day'))
-      );
+    );
 
     const [loading, setLoading] = useState(true)
 
@@ -53,7 +53,12 @@ const MyCalendar1 = () => {
     }, [])
 
     const eventClickAction = (data) => {
-        navigate(`/eventdetails/${data.event.id}`)
+        console.log(data.event)
+        if(data.event.classNames.join().includes('Booked')) {
+            navigate('/dashboard/:mycalendar')
+        } else {
+            navigate(`/eventdetails/${data.event.id}`)
+        }
     }
 
     return (
