@@ -130,6 +130,7 @@ section>h2 {
 
 .home {
   height: 100vh;
+  width: 100%;
 }
 
 .home-nav {
@@ -353,6 +354,30 @@ img {
 .nav-childs:focus {
   background-color: var(--color-primary);
   color: var(--color-white);
+}
+
+.video-img {
+  height: 30rem;
+  width: 100%;
+}
+
+video {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+}
+
+.video-content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  
 }
 
 
