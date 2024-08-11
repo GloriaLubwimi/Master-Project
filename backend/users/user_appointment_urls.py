@@ -3,6 +3,5 @@ from .views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('appointments', AppointmentViewset, basename='appointments')
+router.register('booking', UserAppointmentViewset, basename='booking')
 urlpatterns = router.urls
-

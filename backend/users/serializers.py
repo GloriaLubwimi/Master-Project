@@ -24,3 +24,9 @@ class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Appointments
         fields = ('id', 'start', 'classNames', 'end', 'title')
+
+class UserAppointmentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserAppointments
+        fields = '__all__'
