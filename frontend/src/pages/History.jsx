@@ -9,7 +9,6 @@ const History = () => {
 
     return (
         <div className='history'>
-            {/* <h1>History</h1> */}
 
             <div className='patmos4-img'>
                 

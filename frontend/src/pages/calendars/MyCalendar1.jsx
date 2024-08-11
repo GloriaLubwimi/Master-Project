@@ -53,7 +53,7 @@ const MyCalendar1 = () => {
     }, [])
 
     const eventClickAction = (data) => {
-        console.log(data.event)
+        // console.log(data.event)
         if(data.event.classNames.join().includes('Booked')) {
             navigate('/dashboard/:mycalendar')
         } else {

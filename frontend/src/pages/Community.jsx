@@ -9,7 +9,13 @@ const Community = () => {
 
     return (
         <div className='community'>
-            <h1>Community</h1>
+            <div className='patmos4-img'>
+                
+            </div>
+
+            <div className='home-description'>
+                <h1>Patmos Community</h1>
+            </div>
         </div>
     )
 }
