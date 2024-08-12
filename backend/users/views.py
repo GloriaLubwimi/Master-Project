@@ -52,7 +52,10 @@ class UserAppointmentViewset(viewsets.ViewSet):
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            user_appointment = serializer.save()
+            appoint = Appointments.objects.get(pk=user_appointment.appointment.pk)
+            appoint.status = "In Progress"
+            appoint.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
