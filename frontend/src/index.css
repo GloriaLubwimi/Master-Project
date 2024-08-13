@@ -413,6 +413,10 @@ a.Progress{
   cursor: pointer;
 }
 
+/* ============ Status css for Booking ============ */
+.your-bookings {
+  text-align: center;
+}
 
 
 /* ============ Auth pages (Login, Register, Reset) ============ */

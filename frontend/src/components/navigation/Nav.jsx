@@ -29,6 +29,7 @@ const Nav = () => {
                 {user ?
                     <>
                         <NavLink className='nav-childs' to="/dashboard">Dashboard</NavLink>
+                        <NavLink className='nav-childs' to="/eventdetails/:id/:yourbookings">Your Boookings</NavLink>
                         <NavLink className='nav-childs' to="/" onClick={handleLogout}>Logout</NavLink>
                     </>
                     :
