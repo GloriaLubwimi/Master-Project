@@ -43,10 +43,10 @@ const EventDetails = () =>{
       })
     }
 
-    const sendData = (e) => {
+    const sendData = async (e) => {
       e?.preventDefault()
 
-      AxiosInstance.post('/booking/', {
+      const response = await AxiosInstance.post('/booking/', {
         'name': name,
         'phone_number': phone_number,
         'user': info.id,
@@ -57,9 +57,10 @@ const EventDetails = () =>{
           'Content-Type': 'application/json'
         }
       })
-      .then(res => navigate("/dashboard/:mycalendar"))
+      .then(res => res.data)
       .catch(error => console.log(error));
-      
+      // console.log(response)
+      navigate('/eventdetails/:id/:yourbookings')
     }
   
     useEffect(() =>{

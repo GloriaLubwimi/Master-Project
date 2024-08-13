@@ -2,6 +2,8 @@ from rest_framework import viewsets, permissions, status
 from .serializers import *
 from rest_framework.response import Response
 from .models import *
+from rest_framework.decorators import action
+
 
 class AppointmentViewset(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
@@ -63,3 +65,9 @@ class UserAppointmentViewset(viewsets.ViewSet):
         queryset = self.queryset.get(pk=pk)
         queryset.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    @action(detail=True)
+    def user_appointments(self, request, pk=None):
+        print(request.user, pk)
+        appointments = UserAppointments.objects.filter(user__pk=pk)
+        return Response(self.serializer_class(appointments, many=True).data)
