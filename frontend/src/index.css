@@ -281,6 +281,123 @@ img {
   background-size: cover;
 }
 
+/* ============ Home page ============ */
+
+.praying {
+  background-image: url(./assets/praying.jpg);
+  width: 100%;
+  height: 35rem;
+  background-size: cover;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 2rem;
+  padding-top: 3.7rem;
+}
+
+.description-title {
+  font-size: 4rem;
+  color: black;
+  text-shadow:#1f1f38 1px 0 10px;
+}
+
+.description-intro {
+  font-size: 1.5rem; 
+  color: #1f1f38;
+  text-shadow: 1px 1px 2px black;
+
+
+}
+
+.description-service {
+  font-size: 1.7rem; 
+  text-shadow: 1px 1px 2px black;
+}
+
+/* ============ Contact page ============ */
+
+.contact-bottom {
+  background-image: url(./assets/waves.jpg);
+  width: 100%;
+  height: 50rem;
+  background-size: cover;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  padding-top: 2rem;
+  padding-left: 5rem;
+  text-align: left;
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.contact-title {
+  font-size: 4rem;
+  /* text-shadow:#1f1f38 1px 0 10px; */
+  font-family: 'Prospectus', 'Georgia', serif !important;
+  
+}
+
+.contact-email {
+  font-size: 1rem;
+}
+
+.contact-address {
+  /* padding-left: 8rem; */
+  font-size: 1rem;
+}
+
+.contact-message {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding-right: 5rem;
+}
+
+.contact-prayer-title {
+  font-size: 3.9rem; 
+  font-family: 'Prospectus', 'Georgia', serif !important;
+}
+
+.contact-gospel-title {
+  font-size: 3.9rem;
+  /* text-shadow:#1f1f38 1px 0 10px; */
+  font-family: 'Prospectus', 'Georgia', serif !important;
+}
+
+.contact-prayer-description {
+  font-size: 1rem;
+  /* padding-left: 12.5rem; */
+}
+
+.contact-prayer-email {
+  font-size: 1rem;
+}
+
+.contact-gospel-description {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.contact-gospel-email {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+
+
+/* ============ Gift page ============ */
+
 .gift-img {
   background-image: url(./assets/gift.jpeg);
   width: 100%;

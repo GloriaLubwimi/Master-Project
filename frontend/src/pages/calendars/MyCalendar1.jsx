@@ -25,7 +25,7 @@ const MyCalendar1 = () => {
 
      const toDateChange = (newDate) =>{
        setToDate(newDate)
-        console.log("Selected to date", newDate.format('DD-MM-YYYY'))
+        // console.log("Selected to date", newDate.format('DD-MM-YYYY'))
      }
 
     console.log(selectedStatus)
