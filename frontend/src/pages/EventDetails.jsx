@@ -103,15 +103,31 @@ const EventDetails = () =>{
             <form style={{paddingLeft: '1rem', display:'flex', flexDirection: 'column'}} onSubmit={sendData} >
               <div>
                 <label>Your Name And SurName :</label>&nbsp;&nbsp;
-                <input type='text' placeholder='name' value={name} onChange={(ev) => setName(ev.target.value)} style={{height: '1.5rem', textAlign: 'center', borderRadius: '0.3rem'}}/>
+
+                <input type='text' placeholder='name' value={name} 
+                  onChange={(ev) => setName(ev.target.value)} 
+                  style={{height: '1.5rem', textAlign: 'center', borderRadius: '0.3rem'}}
+                />
               </div><br />
               
               <div>
                 <label>Your own Phone Number:</label>&nbsp;&nbsp; 
-                <input type='text' placeholder='phone' value={phone_number} onChange={(ev) => setPhone_Number(ev.target.value)} style={{height: '1.5rem', textAlign: 'center', borderRadius: '0.3rem'}}/>
+
+                <input type='text' placeholder='phone' value={phone_number} 
+                  onChange={(ev) => setPhone_Number(ev.target.value)} 
+                  style={{height: '1.5rem', textAlign: 'center', borderRadius: '0.3rem'}}
+                />
               </div><br />
 
-              <button type='submit' style={{height: '2rem', width: '15rem', textAlign: 'center', backgroundColor: 'green', color:'white', fontSize: '1.5rem', borderRadius: '1rem', border: '4px solid darkgreen', cursor:'pointer'}}>Book</button>
+              <button type='submit' 
+                style={{
+                  height: '2rem', width: '15rem', textAlign: 'center', 
+                  backgroundColor: 'green', color:'white', fontSize: '1.5rem', borderRadius: '1rem', 
+                  border: '4px solid darkgreen', cursor:'pointer'
+                }}
+              >
+                Book
+              </button>
             </form>
         </div>
     )

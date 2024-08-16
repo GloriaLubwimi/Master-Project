@@ -1,5 +1,5 @@
 import React from 'react'
-import swish from '../assets/swish.webp'
+import swish from '../assets/swish.jpg'
 
 const Gift = () => {
 
