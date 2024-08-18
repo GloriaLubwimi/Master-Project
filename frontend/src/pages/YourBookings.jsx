@@ -12,7 +12,7 @@ const YourBookings = () => {
     const MyParam = useParams()
     const MyId = MyParam.id
 
-    const [events, setEvents] = useState()
+    const [events, setEvents] = useState([])
     const [loading, setLoading] = useState(true)
 
     const getUserBookingsInfo = (info) => {
@@ -26,17 +26,8 @@ const YourBookings = () => {
         })
     }
 
-    const GetData = () => {
-        // AxiosInstance.get(`appointments/${MyId}`).then((res) => {
-        //     console.log(res.data)
-        //     setEvents(res.data.appointments)
-        //     setLoading(false)
-        // })
-
-        // booking/11/appointments/
-
-        AxiosInstance.get('appointments/6/').then((res) => {
-            console.log(res.data)
+    const getAppointments = (info) => {
+        AxiosInstance.get(`appointments/${info.id}/user_appointments/`).then((res) => {
             setEvents(res.data)
             setLoading(false)
         })
@@ -46,8 +37,6 @@ const YourBookings = () => {
     useEffect(()=>{
         const userInfo = async ()=> {
           const info = await authService.getUserInfo(user.access)
-        //   console.log(info)
-        //   console.log(user)
           setInfo(info)
         } 
         userInfo()
@@ -57,12 +46,9 @@ const YourBookings = () => {
     useEffect(() => {
         if(info) {
             getUserBookingsInfo(info)
+            getAppointments(info)
         }
     }, [info])
-
-    useEffect(() => {
-        GetData()
-    }, [])
 
     return(
         <div className="your-bookings">
@@ -86,27 +72,23 @@ const YourBookings = () => {
                         </div>
                     )
                 })
-            }
-
-            
+            }      
             
             {
                 loading ? <p>Loading the data...</p> :
                 <div>
-                    {/* {
-                        events?.map(ev => {
+                    {
+                        events.map(ev => {
                             return(
                                 <div key={ev.id}>
-                                    <div> {ev.title} </div>
+                                     <div> Title: {ev.title} </div>
+                                     <div> Your Status: {ev.classNames} </div> 
+                                     <div> Start Date: {ev.start} </div>
+                                     <div> End Date: {ev.end} </div>
                                 </div>
                             )
                         })
-                    } */}
-
-                    <div> Title: {events?.title} </div>
-                    <div> Your Status: {events?.classNames} </div> 
-                    <div> Start Date: {events?.start} </div>
-                    <div> End Date: {events?.end} </div>
+                    }
                 </div>
                        
             }

@@ -21,6 +21,13 @@ class AppointmentViewset(viewsets.ViewSet):
         serializer = self.serializer_class(queryset)
         return Response(serializer.data)
     
+    @action(detail=True)
+    def user_appointments(self, request, pk=None):
+        appointments = []
+        for q in UserAppointments.objects.filter(user__pk=pk).select_related("appointment"):
+            appointments.append(q.appointment)
+        return Response(self.serializer_class(appointments, many=True).data)
+    
 
 class UserAppointmentViewset(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
