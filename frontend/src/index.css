@@ -431,6 +431,16 @@ img {
     padding-left: 5rem;
   }
 
+  /* ============ community page ============ */
+
+  .fc .fc-cell-shaded, .fc .fc-day-disabled {
+    color: blue;
+  }
+
+  .fc .fc-list-event:hover td{
+    background-color: blueviolet;
+  }
+
 /* ============ Gift page ============ */
 
 .gift-img {

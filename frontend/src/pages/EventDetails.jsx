@@ -19,6 +19,7 @@ const EventDetails = () =>{
     const MyId = MyParam.id
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState(true)
+    const [bookings, setBookings] = useState([])
 
     useEffect(()=>{
       const userInfo = async ()=> {
@@ -33,6 +34,10 @@ const EventDetails = () =>{
         setEvents(res.data)
         setLoading(false)
         // console.log(res.data)
+      })
+
+      AxiosInstance.get(`appointments/${MyId}/users/`).then((res) =>{
+        setBookings(res.data)
       })
   
     }
@@ -67,7 +72,7 @@ const EventDetails = () =>{
       GetData();
     },[] )
 
-
+    const myBooking = bookings.find(booking => booking.user === info?.id)
 
     return(
         <div>
@@ -119,15 +124,15 @@ const EventDetails = () =>{
                 />
               </div><br />
 
-              <button type='submit' 
+              { !myBooking ? <button type='submit' 
                 style={{
                   height: '2rem', width: '15rem', textAlign: 'center', 
                   backgroundColor: 'green', color:'white', fontSize: '1.5rem', borderRadius: '1rem', 
                   border: '4px solid darkgreen', cursor:'pointer'
                 }}
               >
-                Book
-              </button>
+                {!(bookings.length > 0) ? 'Book': 'Queu'}
+              </button> : null}
             </form>
         </div>
     )

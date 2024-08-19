@@ -30,3 +30,9 @@ class UserAppointmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAppointments
         fields = '__all__'
+
+class CommunitySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Community
+        fields = ('id', 'comments', 'date_field', 'start_time')

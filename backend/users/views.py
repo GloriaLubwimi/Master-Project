@@ -28,6 +28,10 @@ class AppointmentViewset(viewsets.ViewSet):
             appointments.append(q.appointment)
         return Response(self.serializer_class(appointments, many=True).data)
     
+    @action(detail=True)
+    def users(self, request, pk=None):
+        return Response(UserAppointmentSerializer(UserAppointments.objects.filter(appointment__pk=pk), many=True).data)
+    
 
 class UserAppointmentViewset(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
@@ -78,3 +82,14 @@ class UserAppointmentViewset(viewsets.ViewSet):
         print(request.user, pk)
         appointments = UserAppointments.objects.filter(user__pk=pk)
         return Response(self.serializer_class(appointments, many=True).data)
+    
+
+class CommunityViewset(viewsets.ViewSet):
+    permission_classes = [permissions.AllowAny]
+    queryset = Community.objects.all()
+    serializer_class = CommunitySerializer
+
+    def list(self, request):
+        queryset = Community.objects.all()
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)

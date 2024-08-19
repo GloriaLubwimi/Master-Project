@@ -8,6 +8,8 @@ from .managers import CustomUserManager
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
+    name = models.CharField(max_length=200)
+    phone_number = models.CharField(max_length=100)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
@@ -37,7 +39,19 @@ class UserAppointments(models.Model):
     name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=100)
     appointment = models.ForeignKey(Appointments, on_delete=models.CASCADE) 
+    created_at = models.DateTimeField(auto_now_add=True)
     
 
     def __str__(self) -> str:
         return self.name
+    
+class Community(models.Model):
+    comments = models.CharField(max_length= 200)
+    date_field = models.DateField()
+    start_time = models.TimeField()
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    
+    def __str__(self) -> str:
+        return self.comments

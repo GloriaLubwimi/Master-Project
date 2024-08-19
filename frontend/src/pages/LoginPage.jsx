@@ -44,7 +44,7 @@ const LoginPage = () => {
             toast.error(message)
         }
 
-        if (isSuccess || user) {
+        if (isSuccess || user ) {
             navigate("/dashboard")
         }
 
