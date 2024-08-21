@@ -55,7 +55,9 @@ const YourBookings = () => {
             <h1> Your Bookings </h1>
 
             <div>
-               Your email: {info?.email}
+               <span className="your-bookings-label">Your email:  </span> 
+               
+               <span className="your-bookings-details">{info?.email}</span>
             </div>
 
             {
@@ -63,11 +65,15 @@ const YourBookings = () => {
                     return(
                         <div key={yourBooking.id}>
                             <div>
-                                Your Name: { yourBooking.name }
+                                <span className="your-bookings-label">Your Name:  </span> 
+                                    
+                                <span className="your-bookings-details">{ yourBooking.name }</span>
                             </div>
 
                             <div>
-                                Your Phone: { yourBooking.phone_number }
+                                <span className="your-bookings-label">Your Phone:  </span>
+                                
+                                <span className="your-bookings-details">{ yourBooking.phone_number }</span>
                             </div>
                         </div>
                     )
@@ -81,10 +87,29 @@ const YourBookings = () => {
                         events.map(ev => {
                             return(
                                 <div key={ev.id}>
-                                     <div> Title: {ev.title} </div>
-                                     <div> Your Status: {ev.classNames} </div> 
-                                     <div> Start Date: {ev.start} </div>
-                                     <div> End Date: {ev.end} </div>
+                                     <div> 
+                                        <span className="your-bookings-label">Title:  </span>
+
+                                        <span className="your-bookings-details">{ev.title}</span> 
+                                      </div>
+
+                                     <div> 
+                                        <span className="your-bookings-label">Your Status:  </span> 
+                                        
+                                        <span className="your-bookings-details">{ev.classNames}</span> 
+                                     </div> 
+
+                                     <div> 
+                                        <span className="your-bookings-label">Start Date:  </span>
+
+                                        <span className="your-bookings-details">{ev.start}</span> 
+                                     </div>
+
+                                     <div> 
+                                        <span className="your-bookings-label">End Date:  </span>
+
+                                        <span className="your-bookings-details">{ev.end}</span> 
+                                    </div>
                                 </div>
                             )
                         })
@@ -93,7 +118,7 @@ const YourBookings = () => {
                        
             }
                         
-
+            <button className="delete-bookings"> Delete </button>
             
 
         </div>

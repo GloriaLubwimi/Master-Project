@@ -28,7 +28,7 @@ const RegisterPage = () => {
         })
         )
     }
-
+ 
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -37,6 +37,7 @@ const RegisterPage = () => {
             toast.error("Passwords do not match")
         } else {
             const userData = {
+                name,
                 email,
                 password,
                 re_password

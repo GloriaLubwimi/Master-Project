@@ -578,6 +578,20 @@ a.Progress{
 /* ============ Status css for Booking ============ */
 .your-bookings {
   text-align: center;
+  font-size: 1.5rem;
+}
+
+.your-bookings-label {
+  color: #0056b3;
+  text-shadow: 2px 2px 3px black;
+}
+
+.delete-bookings {
+  font-size: 2rem;
+  border-radius: 1rem;
+  width: 10rem;
+  margin-top: 2rem;
+  cursor: pointer;
 }
 
 
