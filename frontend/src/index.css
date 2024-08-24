@@ -256,8 +256,13 @@ img {
   background-size: cover;
 }
 
+.testing-1 {
+color: white;
+text-shadow: 1px 1px 2px black;
+}
+
 .booking-title-1 {
-  padding-top: 5%;
+  text-shadow: 2px 2px 3px black;
 }
 
 .fc-direction-ltr  {
@@ -269,6 +274,7 @@ img {
   width: 100%;
   height: 100%;
   background-size: cover;
+
 }
 
 .patmos4-img {
