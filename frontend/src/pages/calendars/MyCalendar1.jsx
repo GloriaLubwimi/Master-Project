@@ -53,8 +53,8 @@ const MyCalendar1 = () => {
     }, [])
 
     const eventClickAction = (data) => {
-        // console.log(data.event)
-        if(data.event.classNames.join().includes('Booked')) {
+        console.log(data.event)
+        if(data.event.classNames.join().includes('Booked') || data.event.start < Date.now()) {
             navigate('/dashboard/:mycalendar')
         } else {
             navigate(`/eventdetails/${data.event.id}`)

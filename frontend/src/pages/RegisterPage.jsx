@@ -9,12 +9,14 @@ import Spinner from '../components/Spinner'
 const RegisterPage = () => {
 
     const [formData, setFormData] = useState({
+        "name": "",
+        "phone_number": "",
         "email": "",
         "password": "",
         "re_password": "",
     })
 
-    const { email, password, re_password } = formData
+    const { name, phone_number, email, password, re_password } = formData
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -38,6 +40,7 @@ const RegisterPage = () => {
         } else {
             const userData = {
                 name,
+                phone_number,
                 email,
                 password,
                 re_password
@@ -71,6 +74,7 @@ const RegisterPage = () => {
                 {isLoading && <Spinner />}
 
                 <form className="auth__form">
+
                     <input type="email"
                         placeholder="Email"
                         name="email"
@@ -78,6 +82,23 @@ const RegisterPage = () => {
                         value={email}
                         required
                     />
+
+                <input type="text"
+                        placeholder="Name"
+                        name="name"
+                        onChange={handleChange}
+                        value={name}
+                        required
+                    />
+
+                <input type="text"
+                        placeholder="Phone"
+                        name="phone_number"
+                        onChange={handleChange}
+                        value={phone_number}
+                        required
+                    />
+                    
                     <input type="password"
                         placeholder="Password"
                         name="password"

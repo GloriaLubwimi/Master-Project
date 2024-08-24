@@ -74,7 +74,12 @@ class UserAppointmentViewset(viewsets.ViewSet):
     
     def destroy(self, request, pk=None):
         queryset = self.queryset.get(pk=pk)
+        appoint = Appointments.objects.get(pk=queryset.appointment.pk)
         queryset.delete()
+        user_appointments = UserAppointments.objects.filter(appointment__pk=appoint.pk)
+        if len(user_appointments) < 1:
+            appoint.status = 'Available'
+            appoint.save()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
     @action(detail=True)

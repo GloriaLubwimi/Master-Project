@@ -8,10 +8,25 @@ User = get_user_model()
 
 
 class CreateUserSerializer(UserCreateSerializer):
+    re_password = serializers.CharField(
+        style={"input_type": "password"}, write_only=True
+    )
+     
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ['id', 'email', 'password']
+        fields = ['id', 'email', 'name', 'phone_number', 'password', 're_password']
 
+    def validate(self, attrs):
+        # Perform validation for password and re_password fields
+        if attrs["password"] != attrs["re_password"]:
+            raise serializers.ValidationError("Passwords do not match.")
+        return attrs
+
+    def create(self, validated_data):
+        validated_data.pop(
+            "re_password"
+        )  # Remove re_password field before creating the user
+        return super().create(validated_data)
 
 # class AppointmentSerializer
 

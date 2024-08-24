@@ -19,7 +19,6 @@ env = environ.Env(DEBUG=(bool, False))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-print(env)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -173,8 +172,10 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {
         'user_create': 'users.serializers.CreateUserSerializer',
-        'user': "users.serializers.CreateUserSerializer",
-        'user_delete': "djoser.serializers.UserDeleteSerializer",      
+        'user': 'djoser.serializers.UserSerializer',
+        'current_user': 'users.serializers.CreateUserSerializer',
+        'user_delete': "djoser.serializers.UserDeleteSerializer",
+        'user_create_password_retype': 'users.serializers.CreateUserSerializer',      
     },
 }
 

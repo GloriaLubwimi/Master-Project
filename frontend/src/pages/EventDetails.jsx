@@ -3,15 +3,12 @@ import { useParams } from 'react-router-dom'
 import AxiosInstance from './AxiosInstance'
 import Box from '@mui/material/Box';
 import authService from "../features/auth/authService";
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from "react-router-dom"
+import { useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom"
 
-// import axios from 'axios';
 
 const EventDetails = () =>{
-    const [name, setName] = useState('')
     const [info, setInfo] = useState(undefined)
-    const [phone_number, setPhone_Number] = useState('')
     const { user} = useSelector((state) => state.auth)
     const navigate = useNavigate()
 
@@ -33,7 +30,6 @@ const EventDetails = () =>{
       AxiosInstance.get(`appointments/${MyId}`).then((res) =>{
         setEvents(res.data)
         setLoading(false)
-        // console.log(res.data)
       })
 
       AxiosInstance.get(`appointments/${MyId}/users/`).then((res) =>{
@@ -42,18 +38,10 @@ const EventDetails = () =>{
   
     }
 
-    const GetEmail = () => {
-      AxiosInstance.get(`/booking/${MyId}`).then((res) => {
-        // console.log(res.data)
-      })
-    }
-
     const sendData = async (e) => {
       e?.preventDefault()
 
-      const response = await AxiosInstance.post('/booking/', {
-        'name': name,
-        'phone_number': phone_number,
+      await AxiosInstance.post('/booking/', {
         'user': info.id,
         'appointment': MyId
       },
@@ -64,7 +52,6 @@ const EventDetails = () =>{
       })
       .then(res => res.data)
       .catch(error => console.log(error));
-      // console.log(response)
       navigate('/eventdetails/:id/:yourbookings')
     }
   
@@ -106,23 +93,6 @@ const EventDetails = () =>{
             }
 
             <form style={{paddingLeft: '1rem', display:'flex', flexDirection: 'column'}} onSubmit={sendData} >
-              <div>
-                <label>Your Name And SurName :</label>&nbsp;&nbsp;
-
-                <input type='text' placeholder='name' value={name} 
-                  onChange={(ev) => setName(ev.target.value)} 
-                  style={{height: '1.5rem', textAlign: 'center', borderRadius: '0.3rem'}}
-                />
-              </div><br />
-              
-              <div>
-                <label>Your own Phone Number:</label>&nbsp;&nbsp; 
-
-                <input type='text' placeholder='phone' value={phone_number} 
-                  onChange={(ev) => setPhone_Number(ev.target.value)} 
-                  style={{height: '1.5rem', textAlign: 'center', borderRadius: '0.3rem'}}
-                />
-              </div><br />
 
               { !myBooking ? <button type='submit' 
                 style={{

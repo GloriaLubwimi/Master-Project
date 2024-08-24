@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <div className="container home-page__container">
-        <h1 className="main__title">Bokings</h1>
+        <h1 className="main__title">Bookings</h1>
         <div className="home__buttons">
           <Link to="/login" className="btn btn-secondary">Login</Link>
           <Link to="/register" className="btn btn-primary">Sign up</Link>

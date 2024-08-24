@@ -590,8 +590,14 @@ a.Progress{
   font-size: 2rem;
   border-radius: 1rem;
   width: 10rem;
-  margin-top: 2rem;
   cursor: pointer;
+}
+
+.bookings {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  gap: 5rem;
 }
 
 
