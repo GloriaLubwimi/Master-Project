@@ -65,39 +65,48 @@ const MyCalendar1 = () => {
         <React.Fragment>
             { loading ? <p>Loading the data...</p> :
             <>
-            <Box sx={{boxShadow:3,padding:"20px", display:'flex', justifyContent:'space-evenly', marginBottom:'20px'}}>
-                <Box sx={{width:'30%'}}>
-                    <MultiSelectForm
-                    label = {"Status"}
-                    options = {statusOptions}
-                    setSelectedValue={setSelectedStatus}
-                    selectedValue = {selectedStatus}
+                <Box sx={{boxShadow:3,padding:"20px", display:'flex', justifyContent:'space-evenly', marginBottom:'20px'}}>
+                    <Box sx={{width:'30%'}}>
+                        <MultiSelectForm
+                        label = {"Status"}
+                        options = {statusOptions}
+                        setSelectedValue={setSelectedStatus}
+                        selectedValue = {selectedStatus}
+                        />
+                    </Box>
+
+                    <Box sx={{width:'30%'}}>
+                        <DatePickerForm 
+                            label ={"From date"} value={fromDate} onChange={fromDateChange} />
+                    </Box>
+
+                    <Box sx={{width:'30%'}}>
+                        <DatePickerForm  label ={"To date"} value={toDate} onChange={toDateChange}/>
+                    </Box>
+
+                </Box>
+
+                <Box sx={{boxShadow:3, padding: "10px", display:'flex', justifyContent:'space-evenly'}}>
+                    <div>
+                            <div>Legend</div>
+                            <div className='legend-green'><div className='legend-green-1'></div><span>Available</span></div>
+                            <div className='legend-orange'><div className='legend-orange-1'></div><span>InProgress</span></div>
+                            <div className='legend-red'><div className='legend-red-1'></div><span>Booked</span></div>
+
+                    </div>
+                  <Box  sx={{width: '100%'}}>
+                    <FullCalendar 
+                        plugins={[ dayGridPlugin ]}
+                        initialView="dayGridMonth"
+                        events={filteredEvents}
+                        eventClick={eventClickAction}
                     />
+                  </Box>
                 </Box>
 
-                <Box sx={{width:'30%'}}>
-                    <DatePickerForm 
-                        label ={"From date"} value={fromDate} onChange={fromDateChange} />
-                </Box>
-
-                <Box sx={{width:'30%'}}>
-                     <DatePickerForm  label ={"To date"} value={toDate} onChange={toDateChange}/>
-                </Box>
-
-            </Box>
-
-            <Box sx={{boxShadow:3,padding:"20px"}}>
-                <FullCalendar
-                    plugins={[ dayGridPlugin ]}
-                    initialView="dayGridMonth"
-                    events={filteredEvents}
-                    eventClick={eventClickAction}
-                />
-            </Box>
             </>
 
             }
-        
         </React.Fragment>
     )
 }

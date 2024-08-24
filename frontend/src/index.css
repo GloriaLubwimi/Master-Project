@@ -545,6 +545,41 @@ video {
 
 
 /* ============ Status css for Calendars ============ */
+.legend-green {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.legend-green-1 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: green;
+  border: 2px solid darkgreen;
+}
+
+.legend-orange {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.legend-orange-1 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: orange;
+  border: 2px solid darkorange;
+}
+
+.legend-red {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.legend-red-1 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: red;
+  border: 2px solid darkred;
+}
 
 a.Booked{
   background-color: red;
