@@ -1,24 +1,26 @@
 import React from 'react'
-import { NavLink, Link, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { logout, reset } from '../../features/auth/authSlice'
-import { toast } from 'react-toastify'
-import logo from '../../assets/logo.png'
+import { logout, reset, getUserInfo } from '../../features/auth/authSlice'
+import { useEffect } from 'react'
 
 
 const Nav = () => {
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const { user } = useSelector((state) => state.auth)
+    const { user, userInfo } = useSelector((state) => state.auth)
+    useEffect(()=>{
+       if (user) {
+        dispatch(getUserInfo())
+       }
+      },[user])
 
     const handleLogout = () => {
         dispatch(logout())
         dispatch(reset())
         navigate("/")
     }
-
 
     return (
         <nav className="navbar">
@@ -29,8 +31,15 @@ const Nav = () => {
                 {user ?
                     <>
                         <NavLink className='nav-childs' to="/dashboard">Dashboard</NavLink>
-                        <NavLink className='nav-childs' to="/eventdetails/:id/:yourbookings">Your Boookings</NavLink>
+                        {!userInfo?.is_staff?
+                        <>
+                        <NavLink className='nav-childs' to="/eventdetails/:id/:yourbookings">Your Bookings</NavLink>
+                        </>
+                        :
+                        <NavLink className='nav-childs' to="/community">Community</NavLink>
+                        }
                         <NavLink className='nav-childs' to="/" onClick={handleLogout}>Logout</NavLink>
+                        
                     </>
                     :
                     <>

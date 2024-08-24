@@ -8,6 +8,7 @@ import MultiSelectForm from '../forms/MultiSelectForm'
 import { Box } from '@mui/material'
 import DatePickerForm from '../forms/DatePickerForm'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const MyCalendar1 = () => {
     const [events, setEvents] = useState([])
@@ -15,6 +16,7 @@ const MyCalendar1 = () => {
     const [selectedStatus, setSelectedStatus] = useState([])
     const [fromDate, setFromDate] = useState(null)
     const navigate = useNavigate()
+    const { userInfo } = useSelector((state) => state.auth)
 
     const fromDateChange = (newDate) =>{
         setFromDate(newDate)
@@ -27,8 +29,6 @@ const MyCalendar1 = () => {
        setToDate(newDate)
         // console.log("Selected to date", newDate.format('DD-MM-YYYY'))
      }
-
-    console.log(selectedStatus)
 
     const filteredEvents = events.filter((event) => 
         selectedStatus.includes(event.classNames) &&
@@ -44,7 +44,6 @@ const MyCalendar1 = () => {
             setStatusOptions([...new Set(res.data.map((event) => event.classNames))])
             setSelectedStatus([...new Set(res.data.map((event) => event.classNames))])
             setLoading(false)
-            console.log(res.data)
         })
     }
 
@@ -53,8 +52,7 @@ const MyCalendar1 = () => {
     }, [])
 
     const eventClickAction = (data) => {
-        console.log(data.event)
-        if(data.event.classNames.join().includes('Booked') || data.event.start < Date.now()) {
+        if(!userInfo.is_staff && (data.event.classNames.join().includes('Booked') || data.event.start < Date.now())) {
             navigate('/dashboard/:mycalendar')
         } else {
             navigate(`/eventdetails/${data.event.id}`)
@@ -90,7 +88,7 @@ const MyCalendar1 = () => {
                     <div>
                             <div>Legend</div>
                             <div className='legend-green'><div className='legend-green-1'></div><span>Available</span></div>
-                            <div className='legend-orange'><div className='legend-orange-1'></div><span>InProgress</span></div>
+                            <div className='legend-orange'><div className='legend-orange-1'></div><span>In Progress</span></div>
                             <div className='legend-red'><div className='legend-red-1'></div><span>Booked</span></div>
 
                     </div>

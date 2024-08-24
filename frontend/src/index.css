@@ -566,6 +566,11 @@ video {
 .legend-orange {
   display: flex;
   gap: 0.3rem;
+  justify-content: space-between;
+}
+.legend-orange span{
+  white-space:nowrap;
+
 }
 
 .legend-orange-1 {
@@ -574,6 +579,7 @@ video {
   background-color: orange;
   border: 2px solid darkorange;
 }
+
 
 .legend-red {
   display: flex;

@@ -2,14 +2,12 @@ import {React, useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import AxiosInstance from './AxiosInstance'
 import Box from '@mui/material/Box';
-import authService from "../features/auth/authService";
 import { useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom"
 
 
 const EventDetails = () =>{
-    const [info, setInfo] = useState(undefined)
-    const { user} = useSelector((state) => state.auth)
+    const { userInfo } = useSelector((state) => state.auth)
     const navigate = useNavigate()
 
     const MyParam = useParams()
@@ -17,14 +15,6 @@ const EventDetails = () =>{
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState(true)
     const [bookings, setBookings] = useState([])
-
-    useEffect(()=>{
-      const userInfo = async ()=> {
-        const info = await authService.getUserInfo(user.access)
-        setInfo(info)
-      } 
-      userInfo()
-    },[user])
 
     const GetData = () => {
       AxiosInstance.get(`appointments/${MyId}`).then((res) =>{
@@ -59,7 +49,7 @@ const EventDetails = () =>{
       GetData();
     },[] )
 
-    const myBooking = bookings.find(booking => booking.user === info?.id)
+    const myBooking = bookings.find(booking => booking.user === userInfo?.id)
 
     return(
         <div>
@@ -85,16 +75,16 @@ const EventDetails = () =>{
                     <Box sx={{marginLeft:'10px'}}>{events.end}</Box>
                 </Box>
 
-                <Box sx={{boxShadow:10, padding:'20px', display:'flex', flexDirection:'row', marginBottom:'20px'}}>
+               { !userInfo?.is_staff?<Box sx={{boxShadow:10, padding:'20px', display:'flex', flexDirection:'row', marginBottom:'20px'}}>
                     <Box sx={{fontWeight:'bold'}}>Your email: </Box>
-                    <Box sx={{marginLeft:'10px'}}>{info?.email??""}</Box>
-                </Box>
+                    <Box sx={{marginLeft:'10px'}}>{userInfo?.email??""}</Box>
+                </Box> : null}
               </>
             }
 
             <form style={{paddingLeft: '1rem', display:'flex', flexDirection: 'column'}} onSubmit={sendData} >
 
-              { !myBooking ? <button type='submit' 
+              { !myBooking && !userInfo?.is_staff ? <button type='submit' 
                 style={{
                   height: '2rem', width: '15rem', textAlign: 'center', 
                   backgroundColor: 'green', color:'white', fontSize: '1.5rem', borderRadius: '1rem', 

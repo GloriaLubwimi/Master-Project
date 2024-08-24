@@ -27,6 +27,13 @@ class CreateUserSerializer(UserCreateSerializer):
             "re_password"
         )  # Remove re_password field before creating the user
         return super().create(validated_data)
+    
+class CustomUserSerializer(serializers.ModelSerializer):
+     
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'name', 'phone_number', 'is_staff']
+ 
 
 # class AppointmentSerializer
 
