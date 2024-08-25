@@ -107,6 +107,11 @@ const YourBookings = () => {
                                             <span className="your-bookings-details">{ev.end}</span>
                                         </div>
                                         <div>
+                                            <span className="your-bookings-label">Booking Status:  </span>
+
+                                            <span className="your-bookings-details">{bookings.find(b=>b.appointment == ev.id)?.status ?? ""}</span>
+                                        </div>
+                                        <div>
                                         <button onClick = {()=> {deleteUserAppointment(ev)}} className="delete-bookings"> Delete </button>
                                         </div>
                                     </div>

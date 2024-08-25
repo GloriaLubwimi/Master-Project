@@ -10,7 +10,7 @@ const Dashboard = () => {
         if(userInfo.is_staff) {
             navigate('/dashboard/:mycalendar')
         }
-    },[])
+    },[userInfo])
 
     return (
         <div className='dashboard'>

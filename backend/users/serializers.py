@@ -39,8 +39,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
 class AppointmentSerializer(serializers.ModelSerializer):
     title = serializers.CharField(source = 'name')
-    start = serializers.DateField(source = 'start_date')
-    end = serializers.DateField(source = 'end_date')
+    start = serializers.DateTimeField(source = 'start_date')
+    end = serializers.DateTimeField(source = 'end_date')
     classNames = serializers.CharField(source='status')
 
     class Meta:

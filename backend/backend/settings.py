@@ -172,7 +172,7 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {
         'user_create': 'users.serializers.CreateUserSerializer',
-        'user': 'djoser.serializers.UserSerializer',
+        'user': 'users.serializers.CustomUserSerializer',
         'current_user': 'users.serializers.CustomUserSerializer',
         'user_delete': "djoser.serializers.UserDeleteSerializer",
         'user_create_password_retype': 'users.serializers.CreateUserSerializer',      

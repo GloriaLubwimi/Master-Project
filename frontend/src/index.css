@@ -715,7 +715,23 @@ a.Progress{
 
 
 /* ============ COMPONENTS ============ */
+.react-responsive-modal-modal {
+  background-color: #1f1f38 !important;
+}
 
+.react-responsive-modal-closeButton {
+  top: 0 !important;
+  right: -1px !important;
+}
+
+.react-responsive-modal-closeButton path{
+  fill: red !important;
+}
+
+.create-button{
+  color: black;
+  background-color: green;
+}
 
 /* ============ Spinner ============ */
 

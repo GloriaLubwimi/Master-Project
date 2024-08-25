@@ -24,8 +24,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     
 class Appointments(models.Model):
     name = models.CharField(max_length= 200)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
     comments = models.CharField(max_length=500, blank=True, null=True)
     status =  models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
@@ -38,9 +38,11 @@ class UserAppointments(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     appointment = models.ForeignKey(Appointments, on_delete=models.CASCADE) 
     created_at = models.DateTimeField(auto_now_add=True)
+    # 3 values: wait for response, accepted, rejected
+    status = models.CharField(max_length=100, default='wait for response')
 
     def __str__(self) -> str:
-        return str(self.user) +" "+ str(self.appointment)
+        return str(self.user) + " " + str(self.appointment)
     
 class Community(models.Model):
     comments = models.CharField(max_length= 200)
