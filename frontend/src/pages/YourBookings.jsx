@@ -81,6 +81,7 @@ const YourBookings = () => {
                     <div className="bookings">
                         {
                             events.map(ev => {
+                                const booking = bookings.find(b=>b.appointment == ev.id)
                                 return (
                                     <div key={ev.id}>
                                         <div>
@@ -109,10 +110,10 @@ const YourBookings = () => {
                                         <div>
                                             <span className="your-bookings-label">Booking Status:  </span>
 
-                                            <span className="your-bookings-details">{bookings.find(b=>b.appointment == ev.id)?.status ?? ""}</span>
+                                            <span className="your-bookings-details">{booking?.status ?? ""}</span>
                                         </div>
                                         <div>
-                                        <button onClick = {()=> {deleteUserAppointment(ev)}} className="delete-bookings"> Delete </button>
+                                        {!booking?.status.includes('accepted') && <button onClick = {()=> {deleteUserAppointment(ev)}} className="delete-bookings"> Delete </button>}
                                         </div>
                                     </div>
                                 )

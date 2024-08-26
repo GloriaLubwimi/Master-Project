@@ -20,7 +20,6 @@ const MyCalendar1 = () => {
     const [fromDate, setFromDate] = useState(null)
     const navigate = useNavigate()
     const { userInfo, user } = useSelector((state) => state.auth)
-    const [selectedDate, setSelectedDate] = useState()
 
     const fromDateChange = (newDate) => {
         if (newDate != null) {
@@ -29,13 +28,14 @@ const MyCalendar1 = () => {
     }
 
     const [formData, setFormData] = useState({
+        id: undefined,
         "title": "",
         "classNames": "Available",
         "start": "",
         "end": "",
     })
 
-    const { title, classNames, start, end } = formData
+    const {id, title, classNames, start, end } = formData
 
     const handleChange = (e) => {
         setFormData((prev) => ({
@@ -44,27 +44,6 @@ const MyCalendar1 = () => {
         })
         )
     }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const {start, end, ...values} = formData;
-        const newAppointment  = await AxiosInstance.post('appointments/', {
-            ...values,
-        start: format(new Date(start), 'yyyy-MM-dd HH:mm:ss'),
-        end: format(new Date(end), 'yyyy-MM-dd HH:mm:ss')
-        },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              "Authorization": `Bearer ${user.access}`
-            }
-          })
-          .then(res => res.data)
-          .catch(error => console.log(error));
-        console.log(newAppointment);
-    }
-
-
 
     const [toDate, setToDate] = useState(null)
 
@@ -87,6 +66,35 @@ const MyCalendar1 = () => {
             setSelectedStatus([...new Set(res.data.map((event) => event.classNames))])
             setLoading(false)
         })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const {start, end, ...values} = formData;
+        const newAppointment  = await AxiosInstance.post('appointments/', {
+            ...values,
+        start: format(new Date(start), 'yyyy-MM-dd HH:mm:ss'),
+        end: format(new Date(end), 'yyyy-MM-dd HH:mm:ss')
+        },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              "Authorization": `Bearer ${user.access}`
+            }
+          })
+          .then(res => true)
+          .catch(error => console.log(error));
+          if(newAppointment){
+            setLoading(true)
+              GetData()
+              setFormData({
+                id: undefined,
+                classNames: "Available",
+                start: "",
+                end: "",
+                title: "",
+              })
+          }
     }
 
     useEffect(() => {
@@ -142,23 +150,32 @@ const MyCalendar1 = () => {
                                 eventClick={eventClickAction}
                                 dateClick={(info) => {
                                     if (userInfo.is_staff) {
-                                        console.log(info)
-                                        setSelectedDate(info)
-                                        setFormData({ 
+                                        setFormData(
+                                        { 
+                                            id:-1,
                                             title: "", 
                                             classNames: "Available", 
                                             start: format(info.date, 'yyyy-MM-dd\'T\'HH:mm', { awareOfUnicodeTokens: true }), 
-                                            end: format(addHours(info.date, 1), 'yyyy-MM-dd\'T\'HH:mm', { awareOfUnicodeTokens: true }) })
+                                            end: format(addHours(info.date, 1), 'yyyy-MM-dd\'T\'HH:mm', { awareOfUnicodeTokens: true }) 
+                                        })
 
                                     }
                                 }}
                             />
                         </Box>
                     </Box>
-                    <MyModal open={!!selectedDate} onCloseModal={() => { setSelectedDate(undefined) }} >
+                    <MyModal open={!!id} onCloseModal={() => { 
+                        setFormData({ 
+                            id: undefined,
+                            title: "", 
+                            classNames: "Available", 
+                            start: "", 
+                            end: ""
+                        })
+                    }} >
                         <>
 
-                            <form className="new-Appointment">
+                            <form className="new-Appointment" onSubmit={handleSubmit}>
                                 <div>
                                     <input
                                         type="text"
@@ -202,7 +219,7 @@ const MyCalendar1 = () => {
                                         required
                                     />
                                 </div>
-                                <button className="create-button" type="submit" onClick={handleSubmit}>Create</button>
+                                <button className="create-button" type="submit">Create</button>
                             </form>
 
                         </>

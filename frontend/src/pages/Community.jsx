@@ -13,7 +13,6 @@ const Community = () => {
     const GetData = () => {
         AxiosInstance.get('community/').then((res) =>{
           setEvents(res.data.map(event=>({...event, title: event.comments, date:new Date(event.date_field + ' ' + event.start_time)})))
-          console.log(res.data)
           setLoading(false)
         })
     
@@ -22,7 +21,6 @@ const Community = () => {
     useEffect(() =>{
         GetData();
       },[] )
-    
 
     return (
     
@@ -32,6 +30,11 @@ const Community = () => {
         <div className='community'>
             <Community2
                 myEvents={events}
+                onSuccess = {()=>{
+                    console.log("FOOS STUFFS")
+                    setLoading(true)
+                    GetData()
+                }}
             />
         </div>
         </>

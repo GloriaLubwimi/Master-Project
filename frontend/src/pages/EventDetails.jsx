@@ -28,9 +28,6 @@ const EventDetails = () => {
     AxiosInstance.get(`appointments/${appointmentId}/users/`).then((res) => {
       setBookings(res.data)
     })
-    AxiosInstance.get(`appointments/${appointmentId}/users/`).then((res) => {
-      setBookings(res.data)
-    })
 
   }
 
@@ -69,8 +66,25 @@ const EventDetails = () => {
     }
   }
 
+  const deleteAppointment = async ()=>{
+    const deletedAppointment = await AxiosInstance.delete(`appointments/${appointmentId}/`, 
+      {
+        headers: {
+          "Authorization": `Bearer ${user.access}`
+        }
+      }
+    )
+      .then(res => {
+        return res.data;
+      })
+      .catch(error => console.log(error));
+      if(!!deletedAppointment){
+        navigate('/dashboard/:mycalendar/')
+      }
+  }
+
   useEffect(()=>{
-    const userBooking = bookings.find(booking => booking.appointment === events?.id)
+    const userBooking = bookings.find(booking => booking.appointment === events?.id && booking.status.includes('accepted'))
     if(events?.classNames.includes('Booked') && !!userBooking){
       AxiosInstance.get(`api/v1/auth/users/${userBooking.user}`, 
         {
@@ -165,11 +179,25 @@ const EventDetails = () => {
                 border: '4px solid darkgreen', cursor: 'pointer'
               }}
             >
-              Book
+              Save
             </button>
+            <button 
+              onClick={()=>{
+                deleteAppointment()
+              }}
+              style={{
+                height: '2rem', width: '15rem', textAlign: 'center',
+                backgroundColor: 'red', color: 'white', fontSize: '1.5rem', borderRadius: '1rem',
+                border: '4px solid darkred', cursor: 'pointer'
+              }}
+            >
+              Delete
+            </button>
+
           </div>
         </form>
         : null}
+        
 
       {userInfo.is_staff && events?.classNames.includes('Booked') ? 
       <div>

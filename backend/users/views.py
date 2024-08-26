@@ -13,7 +13,7 @@ class AppointmentViewset(viewsets.ViewSet):
     serializer_class = AppointmentSerializer
 
     def get_permissions(self):
-        if self.action == 'create':
+        if self.action == 'create' or self.action == "destroy":
             return [permissions.IsAdminUser()]
         else:
             return [permissions.AllowAny()]
@@ -35,6 +35,12 @@ class AppointmentViewset(viewsets.ViewSet):
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+    def destroy(self, request, pk=None):
+        queryset = self.queryset.get(pk=pk)
+        serializer = self.serializer_class(queryset)
+        queryset.delete()
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     @action(detail=True)
     def user_appointments(self, request, pk=None):
@@ -117,11 +123,39 @@ class UserAppointmentViewset(viewsets.ViewSet):
     
 
 class CommunityViewset(viewsets.ViewSet):
-    permission_classes = [permissions.AllowAny]
     queryset = Community.objects.all()
     serializer_class = CommunitySerializer
+
+    def get_permissions(self):
+        if self.action in ['create', 'update' , 'destroy']:
+            print(self.action)
+            return [permissions.IsAdminUser()]
+        else:
+            return [permissions.AllowAny()]
 
     def list(self, request):
         queryset = Community.objects.all()
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
+    
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def update(self, request, pk=None):
+        queryset = self.queryset.get(pk=pk)
+        serializer = self.serializer_class(data=request.data, instance = queryset)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def destroy(self, request, pk):
+        print("HERE")
+        queryset = self.queryset.get(pk=pk)
+        print(queryset)
+        queryset.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
