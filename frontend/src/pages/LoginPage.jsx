@@ -41,15 +41,17 @@ const LoginPage = () => {
 
     useEffect(() => {
         if (isError) {
+            dispatch(reset())
             toast.error(message)
+            return;
         }
-
+        console.log(isSuccess, user)
         if (isSuccess || user ) {
+            dispatch(getUserInfo())
             navigate("/dashboard")
+            return;
         }
 
-        dispatch(reset())
-        dispatch(getUserInfo())
 
     }, [isError, isSuccess, user, navigate, dispatch])
 

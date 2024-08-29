@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from "react-redux"
-import { resetPasswordConfirm } from '../features/auth/authSlice'
+import { resetPasswordConfirm, reset } from '../features/auth/authSlice'
 import { AiFillLock } from 'react-icons/ai'
 import Spinner from '../components/Spinner'
 
@@ -48,9 +48,10 @@ const ResetPasswordPageConfirm = () => {
             toast.error(message)
         }
         if (isSuccess) {
-            navigate("/")
             toast.success("Your password was reset successfully.")
-
+            dispatch(reset())
+            navigate("/")
+            return
         }
 
 

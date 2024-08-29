@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { BiLogInCircle } from "react-icons/bi"
 import Spinner from "../components/Spinner"
-import { resetPassword } from "../features/auth/authSlice"
+import { resetPassword, reset } from "../features/auth/authSlice"
 
 const LoginPage = () => {
 
@@ -44,7 +44,9 @@ const LoginPage = () => {
         }
         if (isSuccess) {
             navigate("/")
+            dispatch(reset())
             toast.success("A reset password email has been sent to you.")
+            return
 
         }
 

@@ -23,19 +23,20 @@ const ActivatePage = () => {
             token
         }
         dispatch(activate(userData))
-        toast.success("Your account has been activated! You can login now")
     }
-
+    
     useEffect(() => {
         if (isError) {
             toast.error(message)
         }
-
+        
         if (isSuccess) {
+            toast.success("Your account has been activated! You can login now")
+            dispatch(reset())
             navigate("/login")
+            return
         }
 
-        dispatch(reset())
 
     }, [isError, isSuccess, navigate, dispatch])
 

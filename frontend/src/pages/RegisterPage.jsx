@@ -56,11 +56,12 @@ const RegisterPage = () => {
         }
 
         if (isSuccess || user) {
-            navigate("/")
             toast.success("An activation email has been sent to your email. Please check your email")
+            dispatch(reset())
+            navigate("/")
+            return
         }
 
-        dispatch(reset())
 
     }, [isError, isSuccess, user, navigate, dispatch])
 
